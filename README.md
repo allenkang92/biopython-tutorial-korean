@@ -1,1 +1,1 @@
-# biopython-tutorial-ko
+# biopython-tutorial-korean

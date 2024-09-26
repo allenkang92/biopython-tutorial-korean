@@ -14,7 +14,6 @@ hotfix/issue-number: 긴급 수정 사항
 언더스코어 사용
 예: 01_Introduction.md
 
-
 # 버전 관리:
 시맨틱 버저닝 사용 (예: v1.0.0)
 CHANGELOG.md 파일에 버전별 변경사항 기록
