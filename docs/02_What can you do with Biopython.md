@@ -16,25 +16,25 @@ Biopython에 대해 주목할 한 가지는 종종 "같은 일을 하는" 여러
 
 논란의 여지가 있겠지만(물론!), 생물정보학의 중심 객체는 시퀀스입니다. 따라서 우리는 Biopython에서 시퀀스를 다루는 메커니즘인 Seq 객체에 대한 간단한 소개로 시작하겠습니다. 이에 대해서는 3장에서 더 자세히 다룰 것입니다.
 
-대부분의 경우 시퀀스를 생각할 때 우리는 'AGTACACTGGT'와 같은 문자열을 떠올립니다. 다음과 같이 이 시퀀스로 Seq 객체를 만들 수 있습니다 - ">>>"는 Python 프롬프트를 나타내며 그 뒤에 입력할 내용이 옵니다:
+대부분의 경우 시퀀스를 생각할 때 우리는 'AGTACACTGGT'와 같은 문자열을 떠올립니다. 다음과 같이 이 시퀀스로 Seq 객체를 만들 수 있습니다:
 
 ```python
->>> from Bio.Seq import Seq
->>> my_seq = Seq("AGTACACTGGT")
->>> my_seq
+from Bio.Seq import Seq
+my_seq = Seq("AGTACACTGGT")
+my_seq
 Seq('AGTACACTGGT')
->>> print(my_seq)
+print(my_seq)
 AGTACACTGGT
 ```
 
 Seq 객체는 지원하는 메서드에서 Python 문자열과 다릅니다. 일반 문자열로는 다음과 같은 작업을 할 수 없습니다:
 
 ```python
->>> my_seq
+my_seq
 Seq('AGTACACTGGT')
->>> my_seq.complement()
+my_seq.complement()
 Seq('TCATGTGACCA')
->>> my_seq.reverse_complement()
+my_seq.reverse_complement()
 Seq('ACCAGTGTACT')
 ```
 
@@ -80,12 +80,11 @@ AATCCGGAGGACCGGTGTACTCAGCTCACCGGGGGCATTGCTCCCGTGGTGACCCTGATTTGTTGTTGGG
 이 파일은 94개의 레코드를 포함하고 있으며, 각 레코드는 ">" (큰따옴표) 기호로 시작하는 줄 다음에 한 줄 이상의 시퀀스가 이어집니다. 이제 Python에서 다음을 시도해 보세요:
 
 ```python
->>> from Bio import SeqIO
->>> for seq_record in SeqIO.parse("ls_orchid.fasta", "fasta"):
-...     print(seq_record.id)
-...     print(repr(seq_record.seq))
-...     print(len(seq_record))
-...
+from Bio import SeqIO
+for seq_record in SeqIO.parse("ls_orchid.fasta", "fasta"):
+    print(seq_record.id)
+    print(repr(seq_record.seq))
+    print(len(seq_record))
 ```
 
 화면에 다음과 같은 내용이 출력될 것입니다:
@@ -105,12 +104,11 @@ Seq('CATTGTTGAGATCACATAATAATTGATCGAGTTAATCTGGAGGATCTGTTTACT...GCC')
 이번에는 GenBank 파일 ls_orchid.gbk를 로드해 보겠습니다. FASTA 파일에 사용한 코드 조각과 거의 동일하다는 점에 주목하세요. 유일한 차이점은 파일 이름과 형식 문자열을 변경한 것뿐입니다:
 
 ```python
->>> from Bio import SeqIO
->>> for seq_record in SeqIO.parse("ls_orchid.gbk", "genbank"):
-...     print(seq_record.id)
-...     print(repr(seq_record.seq))
-...     print(len(seq_record))
-...
+from Bio import SeqIO
+for seq_record in SeqIO.parse("ls_orchid.gbk", "genbank"):
+    print(seq_record.id)
+    print(repr(seq_record.seq))
+    print(len(seq_record))
 ```
 
 이는 다음과 같은 결과를 출력할 것입니다:
